@@ -30,7 +30,6 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "@ali/ci": "^3.4.0",
     "egg-bin": "^4.1.0",
     "eslint": "^4.5.0",
     "eslint-config-egg": "^5.0.0",
