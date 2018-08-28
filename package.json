@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/alibaba-fusion/doc-parser/issues"
   },
-  "homepage": "https://github.com/alibaba-fusion/doc-parser#readme"
+  "homepage": "https://github.com/alibaba-fusion/doc-parser#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
