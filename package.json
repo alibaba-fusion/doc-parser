@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "document parser for fusion docs",
   "main": "index.js",
+  "files": [
+    "src",
+    "index.js"
+  ],
   "scripts": {
     "test-local": "egg-bin test",
     "test": "npm run lint --fix && npm run test-local",
