@@ -1,7 +1,9 @@
 'use strict';
 
 const format = require('util').format;
-const hl = require('highlight.js');
+const prism = require('prismjs');
+const loadLanguages = require('prismjs/components/');
+loadLanguages(['jsx', 'scss']);
 
 const escape = function(html) {
   return html.
@@ -20,10 +22,12 @@ exports.render = function(code, language) {
   if (language === 'html') {
     language = 'xml';
   }
-  code = hl.highlight(language, code).value;
+
+  const lang = language === 'javascript' ? 'jsx' : language;
+  code = prism.highlight(code, prism.languages[lang], lang)
   return format(
-    '<div class="highlight"><pre><code class="%s">%s</code></pre></div>',
-    language, code
+    '<div class="highlight"><pre class="language-%s"><code class="language-%s">%s</code></pre></div>',
+    lang, lang, code
   );
 };
 
@@ -50,7 +54,7 @@ exports.language = function(language) {
     language = shortcuts[language];
   }
 
-  if (!language || hl.listLanguages().indexOf(language) < 0) {
+  if (!language || Object.keys(prism.languages).indexOf(language) < 0) {
     return null;
   }
 

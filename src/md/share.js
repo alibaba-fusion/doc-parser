@@ -19,6 +19,9 @@ exports.link = function(href, title, text) {
 };
 
 exports.blockcode = function(code, language) {
+  if (!code) {
+    return '';
+  }
   if (!language || language === '+' || language === '-') {
     return hl.render(code);
   }
