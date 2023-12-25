@@ -1,6 +1,6 @@
 'use strict';
 
-const babel = require('babel-core');
+const esbuild = require('esbuild');
 const format = require('util').format;
 const option = require('./option');
 const encode = require('./encode');
@@ -66,14 +66,15 @@ exports.blockcode = function(code, language) {
     let renderedCode;
     if (language === 'javascript') {
       try {
-        renderedCode = babel.transform(code, {
-          sourceMaps: false,
-          babelrc: false,
-          presets: [
-            require.resolve('babel-preset-react'),
-            require.resolve('babel-preset-env'),
-            require.resolve('babel-preset-stage-0'),
-          ],
+        renderedCode = esbuild.transformSync(code, {
+          format: 'cjs',
+          loader: 'tsx',
+          tsconfigRaw: {
+            compilerOptions: {
+              jsx: 'react',
+              target: 'ES2018'
+            }
+          }
         }).code;
       } catch (e) {
         console.error(e);
