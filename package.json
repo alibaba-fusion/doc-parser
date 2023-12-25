@@ -1,6 +1,6 @@
 {
   "name": "@alifd/doc-parser",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "document parser for fusion docs",
   "main": "index.js",
   "files": [
